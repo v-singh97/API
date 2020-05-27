@@ -1,0 +1,30 @@
+<style>
+    input{
+        padding: 3px;
+        margin: 5px;
+    }
+</style>
+<html>
+    <center>
+    <div style="background-color: white; border-style: solid; border-color: red; width: 60%;">  
+        <h4>UserID: {{user}}</h4>
+        <form method="POST" action="update_user" id="update_user">
+            {% csrf_token %}
+            <input type="hidden" name="userid" value="{{user}}">
+    Start_time1<input type="text" name='start1' value="{{data.start_time1}}"><br>
+    End_time1<input type="text"  name='end1'value="{{data.end_time1}}"><br>
+    Start_time2<input type="text" name='start2' value="{{data.start_time2}}"><br>
+    End_time2<input type="text" name='end2' value="{{data.end_time2}}"><br>
+    Start_time3<input type="text" name='start3' value="{{data.start_time3}}"><br>
+    End_time3<input type="text" name='end3' value="{{data.end_time3}}"><br>
+    <br><br>
+    <a onclick="document.getElementById('update_user').submit();"><button>Update</button></a>
+</form>
+<form method="POST" action="delete_user" id="delete_user">
+    {% csrf_token %}
+    <input type="hidden" name="userid" value="{{user}}">
+<a onclick="document.getElementById('delete_user').submit();"><button>Delete</button></a>
+</form>
+</div>
+</center>
+</html>

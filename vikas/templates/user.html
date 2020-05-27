@@ -1,0 +1,84 @@
+<style>
+    .tables{
+height: 50%;
+width: 100%;
+overflow-y: scroll;
+box-shadow: 0 10px 100px rgba(0,0,0,0.5);
+}
+table{
+
+width: 100%;
+}
+
+table, th, td{
+border: 1px solid #005277;
+border-collapse: collapse;
+text-align: center;
+}
+th{
+  position: sticky;
+  top: 0;
+background: #00bcd4;
+color: #fff;
+box-sizing: border-box;
+}
+tr th:nth-child(1){
+width: 100px;
+text-align: center;
+background: #03707d;
+}
+tr th:nth-child(1){
+background: #00bcd4;
+color #fff;
+}
+input{
+    padding: 2px;
+    margin: 5px;;
+    
+}
+</style>
+<html>
+    <center><h2>USER</h2>
+    <div style="width: 50%;">
+    <table class="tables">
+        <tr>
+            <th>UserID</th>
+            <th>Name</th>
+            <th>TimeZone</th>
+        </tr>
+        {% for i in user %}
+        <tr>
+            <td>{{i.user_id}}</td>
+            <form method="POST" action="user_update" id="{{i.user_id}}">
+                {% csrf_token %}
+                <input type="hidden" value="{{i.user_id}}" name="user">
+                <td><a href="#" onclick="document.getElementById('{{i.user_id}}').submit();">{{i.real_name}}</a></td>
+            </form>
+            <td>{{i.time_zone}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br><br><br>
+<div style="background-color: white; border-style: solid; border-color: red; width: 60%;">  
+    <form method="POST" action="add_user" id="add_user">
+        {% csrf_token %}
+    UserID: <input type="text"  name="userid"><br>
+    Name: <input type="text"  name="name"><br>
+    TimeZone: <input type="text"  name="tz"><br>
+    start_time1<input type="datetime-local" value="2017-06-01T08:30" name="start1"><br>
+    end_time1<input type="datetime-local" value="2017-06-01T08:30" name="end1"><br>
+    start_time12<input type="datetime-local" value="2017-06-01T08:30"  name="start2"><br>
+    end_time2<input type="datetime-local" value="2017-06-01T08:30"  name="end2"><br>
+    start_time3<input type="datetime-local" value="2017-06-01T08:30" name="start3"><br>
+    end_time3<input type="datetime-local" value="2017-06-01T08:30"  name="end3"><br>
+    <a onclick="document.getElementById('add_user').submit();"><button>Add</button></a>
+</form>
+
+
+
+</div>
+</center>
+    <br>
+    
+</html>

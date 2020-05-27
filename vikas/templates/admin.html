@@ -1,0 +1,11 @@
+<html>
+    {{msg}}
+    <form id="form" method="POST" action="verify">
+        {% csrf_token %}
+        <input type="text" placeholder="UserID" name="username"><br>
+        <input type="text" placeholder="Password" name="pwd">  
+        <a onclick="document.getElementById('form').submit();"><input type="button" value="LogIn">
+        </a>
+    </form>
+  
+</html>
